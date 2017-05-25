@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://java.sun.com/jsf/html"
+       xmlns:f="http://java.sun.com/jsf/core"
+       xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>Folha de Ponto Eletronica</title>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/CSS/CSS.css" />
+        <link rel="shortcut icon" href="../Imagens/2997relogio.ico" />
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+
+            <div  id="barrasuperior">
+                <ui:insert name="barsup">
+                    <ui:include src="BarraSuperior.xhtml"/>
+                </ui:insert>
+            </div>
+
+            <div id="barraesquerda">
+                <ui:insert name="baresq">
+                    <ui:include src="BarraEsquerda.xhtml" />
+                </ui:insert>
+            </div>
+
+            <div id="conteudo">
+                <ui:insert name="cont">
+                    <ui:include src="Conteudo.xhtml"/>
+                </ui:insert>
+            </div>
+
+        </p:layout>    
+    </h:body>
+</html>
+

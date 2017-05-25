@@ -1,0 +1,40 @@
+
+/*Componente <div> do template*/ 
+#barrasuperior{
+    background-color: lightblue;
+    /*border-color: black;*/
+    /*border-style: solid;*/
+    height: 70px;
+    background-image: url("../Imagens/div_superior.png"); 
+}
+
+/*Componente <div> do template*/
+#barraesquerda{
+    background-color: azure;
+    /*border-color: black;
+    border-style: solid;*/
+    width: 233px;
+    height: 555px;
+    position: absolute;
+    margin-top: 7px;
+}
+
+/*Componente <div> do template*/
+#conteudo{
+    background-color: azure;
+    /*border: black;
+    border-style: solid;*/
+    width: 1110px;
+    height: 555px;
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 240px;    
+}
+
+
+/*Altera o menu*/
+.menulateral{
+    background-color: ghostwhite;
+}
+
+
