@@ -11,23 +11,32 @@
     </h:head>
     <h:body>
         <ui:composition template="/Templates/Template.xhtml">
+
             <ui:define name="baresq">
                 
-                <h:form>
-                    <p:menu class="menulateral">
-
-                        <p:submenu label="Funcionários">
-                            <p:menuitem value="Folha de Ponto"></p:menuitem>
-                        </p:submenu>
-
-                        <p:submenu label="Chefia">
-                            <p:menuitem value="Gerenciar Funcionários"></p:menuitem>
-                        </p:submenu>
-
-                    </p:menu>
-                </h:form>
-                
             </ui:define>
+            
+            
+            <ui:define name="cont">
+                <h:form id="flogin">
+                    <table>
+                        <tr>
+                            <td><h:outputLabel value="Usuário"/></td>
+                            <td><h:inputText id="inp_nome" required="true" requiredMessage="Digite o login"/></td>
+                            <td><h:message for="inp_nome" style="color: red;display: block"/></td>
+                        </tr>
+                        <tr>
+                            <td><h:outputLabel value="Senha"/></td>
+                            <td><p:password id="inp_pass" required="true" requiredMessage="Digite a senha"/></td>
+                            <td><h:message for="inp_nome" style="color: red;display: block"/></td>
+                        </tr>
+                        <tr>
+                            <td></td><td><p:commandButton value="Entrar" /></td> <!-- falta o action pra validar-->
+                        </tr>
+                    </table>
+                </h:form>
+            </ui:define>
+
         </ui:composition>
     </h:body>
 </html>

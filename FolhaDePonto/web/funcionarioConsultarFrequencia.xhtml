@@ -12,21 +12,49 @@
     <h:body>
         <ui:composition template="/Templates/Template.xhtml">
             <ui:define name="baresq">
-                
+
                 <h:form>
-                    <p:menu class="menulateral">
-
-                        <p:submenu label="Funcionários">
-                            <p:menuitem value="Folha de Ponto"></p:menuitem>
-                        </p:submenu>
-
-                        <p:submenu label="Chefia">
-                            <p:menuitem value="Gerenciar Funcionários"></p:menuitem>
-                        </p:submenu>
-
+                    <p:menu class="menulateral" toggleable="true">
+                        <p:submenu label="Funcionário">
+                            <p:menuitem value="Registrar Ponto" url=""/>
+                            <p:menuitem value="Consultar Ponto" url="http://localhost:8084/FolhaDePonto/faces/funcionarioConsultarFrequencia.xhtml"/>
+                        </p:submenu>                                                   
+                        <p:submenu label="Sistema">
+                            <p:menuitem value="Sair" url=""/>
+                        </p:submenu>                          
                     </p:menu>
                 </h:form>
+
+            </ui:define>
+
+            
+            
+            <ui:define name="cont">
+            
+                <table>
+                    <tr>
+                        <td><p:outputLabel value="ID: "/><p:outputLabel value="0"/></td>
+                        <td><p:outputLabel value="Nome: "/><p:outputLabel value="Fulano"/></td>
+                        <td><p:outputLabel value="Setor: "/><p:outputLabel value="abcde"/></td>
+
+                    </tr>
+                </table>
                 
+                <br></br>
+                
+                <!--https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml-->
+                <p:dataTable var="folhas" value="">
+                    <p:column headerText="Mês">
+                        <h:outputText value="Junho"/>
+                    </p:column>
+                    <p:column headerText="Ano">
+                        <h:outputText value="2017"/>
+                    </p:column>
+                    <p:column headerText="Detalhes">
+                        <h:outputText value="Detalhar"/>
+                    </p:column>                    
+                </p:dataTable>
+           
             </ui:define>
         </ui:composition>
     </h:body>

@@ -11,24 +11,142 @@
     </h:head>
     <h:body>
         <ui:composition template="/Templates/Template.xhtml">
+
             <ui:define name="baresq">
-                
                 <h:form>
-                    <p:menu class="menulateral">
-
+                    <p:menu class="menulateral" toggleable="true">
                         <p:submenu label="Funcionários">
-                            <p:menuitem value="Folha de Ponto"></p:menuitem>
-                        </p:submenu>
-
-                        <p:submenu label="Chefia">
-                            <p:menuitem value="Gerenciar Funcionários"></p:menuitem>
-                        </p:submenu>
-
+                            <p:menuitem value="Gerenciar" url="http://localhost:8084/FolhaDePonto/faces/gerenciarFuncionarios.xhtml"/>
+                        </p:submenu>                         
+                        <p:submenu label="Sistema">
+                            <p:menuitem value="Sair" />
+                        </p:submenu>                          
                     </p:menu>
                 </h:form>
-                
             </ui:define>
+
+
+            <ui:define name="cont">
+
+                <br></br>
+
+                <h:form id="form_cad">
+                    <p:fieldset style="margin-bottom:20px; background-color:azure;">
+                        <table id="tab_cad" columns="3" class="semBorda" >
+                            <tr>
+                                <td><p:outputLabel value="Nome"></p:outputLabel></td>
+                                <td><h:inputText id="inp_nome" required="true" requiredMessage="Informe o nome do usuário"></h:inputText></td>
+                                <td><h:message for="inp_nome" style="color: red;display: block"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><p:outputLabel value="Setor"></p:outputLabel></td>
+                                <td><h:inputText id="inp_setor" required="true" requiredMessage="Informe o setor"></h:inputText></td>
+                                <td><h:message for="inp_setor" style="color: red;display: block"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><p:outputLabel value="Login"></p:outputLabel></td>
+                                <td><h:inputText id="inp_login" required="true" requiredMessage="Informe um nome para login"></h:inputText></td>
+                                <td><h:message for="inp_login" style="color: red;display: block"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><p:outputLabel value="Senha"></p:outputLabel></td>
+                                <td><p:password id="inp_pass" required="true" requiredMessage="Informe uma senha"></p:password></td>
+                                <td><h:message for="inp_pass" style="color: red;display: block"/></td>
+                            </tr>
+
+                            <tr>
+                                <td><p:outputLabel value="Perfil:"></p:outputLabel></td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p:outputLabel value="Chefe"/>
+                                            <input id="radio" type="radio" name="tipo" value="Chefe" />
+                                        </td>
+                                        <td>
+                                            <p:outputLabel value="Comum"/>
+                                            <input id="radio" type="radio" name="tipo" value="Normal" checked="true"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tr>
+
+                            <tr>
+                                <td><p:commandButton value="OK" /></td><!-- falta o action pra validar-->
+                            </tr>
+
+                        </table>
+                    </p:fieldset>
+                </h:form>
+
+                <br></br>
+
+                <!-- Ver para terminar https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
+                <!-- Usar AJAX pra atualizar a lista depois que cadastra-->
+                <p:dataTable var="func" value="">
+                    <p:column headerText="ID">
+                        <h:outputText value="id do funcionário"/>
+                    </p:column>
+                    <p:column headerText="NOME">
+                        <h:outputText value="nome do funcionário"/>
+                    </p:column>
+                    <p:column headerText="Setor">
+                        <h:outputText value="Setor do funcionário"/>
+                    </p:column>
+                    <p:column headerText="Perfil">
+                        <h:outputText value="Perfil do funcionário"/>
+                    </p:column>
+                    <p:column headerText="Frequência">
+                        <h:outputText value="Detalhar"/>
+                    </p:column>
+                    <p:column headerText="">
+                        <h:outputText value="Botão Excluir "/> <h:outputText value="Botão Editar"/>
+                    </p:column>
+                </p:dataTable>
+
+            </ui:define>
+
         </ui:composition>
     </h:body>
 </html>
+
+<!--PRIMEIRA TENTATIVA DE LAYOUT DO FORM
+<p:panelGrid id="pnl_cad" columns="3" class="semBorda" >
+                <p:outputLabel value="Nome"></p:outputLabel>
+                <h:inputText id="inp_nome" required="true" requiredMessage="Informe o nome do usuário"></h:inputText>
+                <h:message for="inp_nome" style="color: red;display: block"/>
+
+                <p:outputLabel value="Setor"></p:outputLabel>
+                <h:inputText id="inp_setor" required="true" requiredMessage="Informe o setor"></h:inputText>
+                <h:message for="inp_setor" style="color: red;display: block"/>
+
+                <p:outputLabel value="Login"></p:outputLabel>
+                <h:inputText id="inp_login" required="true" requiredMessage="Informe um nome para login"></h:inputText>
+                <h:message for="inp_login" style="color: red;display: block"/>
+
+                <p:outputLabel value="Senha"></p:outputLabel>
+                <p:password id="inp_pass" required="true" requiredMessage="Informe uma senha"></p:password>
+                <h:message for="inp_pass" style="color: red;display: block"/>
+
+
+                <p:outputLabel value="Perfil:"></p:outputLabel>
+                <table>
+                    <tr>
+                        <td>
+                            <p:outputLabel value="Chefe"/>
+                            <input id="radio" type="radio" name="tipo" value="Chefe" />
+                        </td>
+                        <td>
+                            <p:outputLabel value="Comum"/>
+                            <input id="radio" type="radio" name="tipo" value="Normal"/>
+                        </td>
+                    </tr>
+                </table>
+                <h:message for="radio" style="color: red;display: block"/>
+
+                <p:commandButton value="Cadastrar" /> falta o action pra validar
+            </p:panelGrid>-->
+
 

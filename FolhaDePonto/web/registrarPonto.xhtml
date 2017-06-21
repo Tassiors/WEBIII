@@ -12,21 +12,23 @@
     <h:body>
         <ui:composition template="/Templates/Template.xhtml">
             <ui:define name="baresq">
-                
+
                 <h:form>
                     <p:menu class="menulateral">
-
-                        <p:submenu label="Funcionários">
-                            <p:menuitem value="Folha de Ponto"></p:menuitem>
-                        </p:submenu>
-
-                        <p:submenu label="Chefia">
-                            <p:menuitem value="Gerenciar Funcionários"></p:menuitem>
-                        </p:submenu>
-
+                        <h:form>
+                            <p:menu class="menulateral" toggleable="true">
+                                <p:submenu label="Funcionário">
+                                    <p:menuitem value="Registrar Ponto" url="http://localhost:8084/FolhaDePonto/faces/registrarPonto.xhtml"/>
+                                    <p:menuitem value="Consultar Ponto" url="http://localhost:8084/FolhaDePonto/faces/funcionarioConsultarFrequencia.xhtml"/>
+                                </p:submenu>                                                   
+                                <p:submenu label="Sistema">
+                                    <p:menuitem value="Sair" url=""/>
+                                </p:submenu>                          
+                            </p:menu>
+                        </h:form>
                     </p:menu>
                 </h:form>
-                
+
             </ui:define>
         </ui:composition>
     </h:body>
