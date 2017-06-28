@@ -6,35 +6,37 @@
        xmlns:ui="http://java.sun.com/jsf/facelets"
        xmlns:p="http://primefaces.org/ui">
 
+   
+        <h:head>
+            <title>Folha de Ponto Eletronica</title>
+            <f:loadBundle basename="messages.messages" var="msgs"/>
+            <link type="text/css" rel="stylesheet" href="#{request.contextPath}/CSS/CSS.css" />
+            <link rel="shortcut icon" href="../Imagens/2997relogio.ico" />
+        </h:head>
 
-    <h:head>
-        <title>Folha de Ponto Eletronica</title>
-        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/CSS/CSS.css" />
-        <link rel="shortcut icon" href="../Imagens/2997relogio.ico" />
-    </h:head>
+        <h:body>
+            <p:layout fullPage="true">
 
-    <h:body>
-        <p:layout fullPage="true">
+                <div  id="barrasuperior">
+                    <ui:insert name="barsup">
+                        <ui:include src="BarraSuperior.xhtml"/>
+                    </ui:insert>
+                </div>
 
-            <div  id="barrasuperior">
-                <ui:insert name="barsup">
-                    <ui:include src="BarraSuperior.xhtml"/>
-                </ui:insert>
-            </div>
+                <div id="barraesquerda">
+                    <ui:insert name="baresq">
+                        <ui:include src="BarraEsquerda.xhtml" />
+                    </ui:insert>
+                </div>
 
-            <div id="barraesquerda">
-                <ui:insert name="baresq">
-                    <ui:include src="BarraEsquerda.xhtml" />
-                </ui:insert>
-            </div>
+                <div id="conteudo">
+                    <ui:insert name="cont">
+                        <ui:include src="Conteudo.xhtml"/>
+                    </ui:insert>
+                </div>
 
-            <div id="conteudo">
-                <ui:insert name="cont">
-                    <ui:include src="Conteudo.xhtml"/>
-                </ui:insert>
-            </div>
+            </p:layout>    
+        </h:body>
 
-        </p:layout>    
-    </h:body>
 </html>
 

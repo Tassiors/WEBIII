@@ -30,7 +30,7 @@
 
                 <br></br>
 
-                <h:form id="form_cad">
+                <h:form id="form">
                     <p:fieldset style="margin-bottom:20px; background-color:azure;">
                         <table id="tab_cad" columns="3" class="semBorda" >
                             <tr>
@@ -74,38 +74,38 @@
                             </tr>
 
                             <tr>
-                                <td><p:commandButton value="OK" /></td><!-- falta o action pra validar-->
+                                <td><p:commandButton action="#{CrudBean.adicionar()}" value="Salvar" /></td><!-- falta o action pra validar-->
                             </tr>
 
                         </table>
                     </p:fieldset>
+
+
+                    <br></br>
+
+                    <!-- Ver para terminar https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
+                    <!-- Usar AJAX pra atualizar a lista depois que cadastra-->
+                    <p:dataTable id ="lista" var="func" value="#{CrudBean.listaFuncionarios}">
+                        <p:column headerText="ID">
+                            <h:outputText value="#{func.funcionarioPK}"/>
+                        </p:column>
+                        <p:column headerText="NOME">
+                            <h:outputText value="#{func.nome}"/>
+                        </p:column>
+                        <p:column headerText="Setor">
+                            <h:outputText value="#{func.setor}"/>
+                        </p:column>
+                        <p:column headerText="Perfil">
+                            <h:outputText value="#{func.tipo}"/>
+                        </p:column>
+                        <p:column headerText="Frequência">
+                            <p:commandButton action="" value="Detalhar"></p:commandButton>
+                        </p:column>
+                        <p:column headerText="">
+                            <p:commandButton value="Excluir" action="#{CrudBean.excluir(func)}"></p:commandButton> <h:outputText value="Botão Editar"/>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
-
-                <br></br>
-
-                <!-- Ver para terminar https://www.primefaces.org/showcase/ui/data/datatable/basic.xhtml -->
-                <!-- Usar AJAX pra atualizar a lista depois que cadastra-->
-                <p:dataTable var="func" value="">
-                    <p:column headerText="ID">
-                        <h:outputText value="id do funcionário"/>
-                    </p:column>
-                    <p:column headerText="NOME">
-                        <h:outputText value="nome do funcionário"/>
-                    </p:column>
-                    <p:column headerText="Setor">
-                        <h:outputText value="Setor do funcionário"/>
-                    </p:column>
-                    <p:column headerText="Perfil">
-                        <h:outputText value="Perfil do funcionário"/>
-                    </p:column>
-                    <p:column headerText="Frequência">
-                        <h:outputText value="Detalhar"/>
-                    </p:column>
-                    <p:column headerText="">
-                        <h:outputText value="Botão Excluir "/> <h:outputText value="Botão Editar"/>
-                    </p:column>
-                </p:dataTable>
-
             </ui:define>
 
         </ui:composition>

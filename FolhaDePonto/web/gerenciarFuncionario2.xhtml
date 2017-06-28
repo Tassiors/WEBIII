@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <link type="text/css" rel="stylesheet" href="#{request.contextPath}/CSS/CSS.css" />
+    </h:head>
+    <h:body>
+        <ui:composition template="/Templates/Template.xhtml">
+            <ui:define name="baresq">
+                <h:form>
+                    <p:menu class="menulateral">
+                        <p:submenu label="Funcionários">
+                            <p:menuitem value="Gerenciar" url="http://localhost:8084/FolhaDePonto/faces/gerenciarFuncionarios.xhtml"/>
+                        </p:submenu>                         
+                        <p:submenu label="Sistema">
+                            <p:menuitem value="Sair" />
+                        </p:submenu> 
+                    </p:menu>
+                </h:form>
+            </ui:define>
+
+            
+            <ui:define name="cont">
+                <h:form id="form">
+                    <h:messages/>
+                    <h:panelGroup rendered="#{!CrudBean.editando}">
+                        <h:dataTable value="#{CrudBean.listaFuncionarios}" var="func" id="lista" frame="box" rules="all" cellpadding="3">
+                            <f:facet name="header">
+                                <h:commandButton action="#{CrudBean.novo()}" value="NOVO">			
+                                    <f:ajax execute="@form" render="@form"/>
+                                </h:commandButton>
+                            </f:facet>					
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                <h:outputText value="#{func.funcionarioPK}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nome</f:facet>
+                                <h:outputText value="#{func.nome}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Setor</f:facet>
+                                <h:outputText value="#{func.setor}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Perfil</f:facet>
+                                <h:outputText value="#{func.tipo}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Frequencia</f:facet>
+                                <p:commandButton value="Detalhar"></p:commandButton>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">EDITAR</f:facet>
+                                <h:commandLink action="#{CrudBean.editar(func)}" value="Editar">
+                                    <f:ajax render="@form" execute="@form"/>
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">EXCLUIR</f:facet>
+                                <h:commandLink action="#{CrudBean.excluir(func)}" value="Excluir" onclick="if (!confirm('Confirma a exclusão da pessoa?'))
+                                            return false">
+                                    <f:ajax execute = "@form" render="@form"/>
+                                </h:commandLink>
+                            </h:column>	
+                        </h:dataTable>
+
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{CrudBean.editando}">
+                        <h:panelGrid columns="2">
+                            <f:facet name="header">Edição de Funcionários</f:facet>
+
+                            <h:outputLabel value="ID" />
+                            <h:inputText value="#{CrudBean.objeto.funcionarioPK}" readonly="true"/>
+                            <h:outputLabel value="Nome" />
+                            <h:inputText value="#{controleCRUDajax.objeto.nome}"/>
+                            <h:outputLabel value="Setor" />
+                            <h:inputText value="#{CrudBean.objeto.setor}"/>
+                            <h:outputLabel value="Perfil" />
+                            <h:inputText value="#{CrudBean.objeto.tipo}"/>
+
+                            <f:facet name="footer">
+                                <div align="center">
+                                    <h:commandButton action="#{CrudBean.cancelar()}" value="Cancelar" immediate="true">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                    <h:commandButton action="#{CrudBean.salvar()}" value="Salvar">
+                                        <f:ajax execute="@form" render="@form"/>
+                                    </h:commandButton>
+                                </div>
+                            </f:facet>			
+                        </h:panelGrid>
+                    </h:panelGroup>
+                </h:form>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

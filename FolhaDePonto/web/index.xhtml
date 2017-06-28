@@ -21,17 +21,17 @@
                 <h:form id="flogin">
                     <table>
                         <tr>
-                            <td><h:outputLabel value="Usuário"/></td>
-                            <td><h:inputText id="inp_nome" required="true" requiredMessage="Digite o login"/></td>
+                            <td><h:outputLabel value="#{msgs.usuario}"/></td>
+                            <td><h:inputText id="inp_nome" required="true" requiredMessage="#{msgs.errUsr}"/></td>
                             <td><h:message for="inp_nome" style="color: red;display: block"/></td>
                         </tr>
                         <tr>
-                            <td><h:outputLabel value="Senha"/></td>
-                            <td><p:password id="inp_pass" required="true" requiredMessage="Digite a senha"/></td>
+                            <td><h:outputLabel value="#{msgs.senha}"/></td>
+                            <td><p:password id="inp_pass" required="true" requiredMessage="#{msgs.errSenha}"/></td>
                             <td><h:message for="inp_nome" style="color: red;display: block"/></td>
                         </tr>
                         <tr>
-                            <td></td><td><p:commandButton value="Entrar" /></td> <!-- falta o action pra validar-->
+                            <td></td><td><p:commandButton value="OK" /></td> <!-- falta o action pra validar-->
                         </tr>
                     </table>
                 </h:form>

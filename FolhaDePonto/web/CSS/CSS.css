@@ -43,3 +43,17 @@
     background-color: azure;
 }
 
+#brasil{
+    position: fixed;
+    top: 0px;
+    left: 1265px;
+    z-index: 1031;
+}
+
+#usa{
+    position: fixed;
+    top: 0px;
+    left: 1315px;
+    z-index: 1031;
+}
+

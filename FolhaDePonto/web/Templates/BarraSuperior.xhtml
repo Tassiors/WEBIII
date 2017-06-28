@@ -2,13 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:view locale="#{idiomaBean.currentLocal}">
+        <h:body>
+            <ui:composition>
+                <h:panelGroup id="" > 
+                    <h:form id="brasil">
+                        <h:commandLink action="#{idiomaBean.mudarIdioma()}">
+                            <h:graphicImage id="brasil" value="../Imagens/brasil.png" width="50px" height="50px"/>
+                            <f:setPropertyActionListener value="pt" target="#{idiomaBean.linguagem}" />                     
+                            <f:setPropertyActionListener value="BR" target="#{idiomaBean.pais}" />
+                        </h:commandLink>
+                    </h:form>
 
-    <h:body>
-        <ui:composition>
-            <h:commandButton id="btPT" value="PT"></h:commandButton>
-            <h:commandButton id="btEN" value="EN"></h:commandButton>
-        </ui:composition>
-    </h:body>
+                    <h:form  id="usa">
+                        <h:commandLink  action="#{idiomaBean.mudarIdioma()}">
+                            <h:graphicImage id="usa" value="../Imagens/usa.png" width="50px" height="50px"/>
+                            <f:setPropertyActionListener value="en" target="#{idiomaBean.linguagem}" />                     
+                            <f:setPropertyActionListener value="US" target="#{idiomaBean.pais}" />
+                        </h:commandLink>
+                    </h:form>
+                </h:panelGroup>
+            </ui:composition>
+        </h:body>
+    </f:view>
 </html>
 
